@@ -1,89 +1,42 @@
 package com.example.ledcontrol
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import com.example.ledcontrol.ui.theme.LEDControlTheme
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
 
-class MainActivity : ComponentActivity() {
-    private val connectionManager = ConnectionManager()
-    
+class MainActivity : AppCompatActivity() {
+    private lateinit var viewPager: ViewPager
+    private lateinit var tabLayout: TabLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            LEDControlTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    LEDControlApp(connectionManager)
-                }
-            }
-        }
-    }
-    
-    override fun onDestroy() {
-        super.onDestroy()
-        connectionManager.close()
-    }
-}
+        setContentView(R.layout.activity_main)
 
-class ConnectionManager {
-    private val client = OkHttpClient()
-    private var isConnected = false
-    
-    fun connect(ip: String): Boolean {
-        // TODO: Implement connection verification
-        isConnected = true
-        return true
-    }
-    
-    fun sendCommand(params: Map<String, Int>): Boolean {
-        return try {
-            val url = "http://$ip/control"
-            val paramString = params.map { (led, value) ->
-                "$led=$value"
-            }.joinToString("&")
-            
-            val request = Request.Builder()
-                .url("$url?$paramString")
-                .build()
-            
-            client.newCall(request).execute().use { response ->
-                response.isSuccessful
-            }
-        } catch (e: Exception) {
-            false
-        }
-    }
-    
-    fun close() {
-        client.dispatcher.executorService.shutdown()
-    }
-    
-    fun isConnected(): Boolean = isConnected
-}
+        viewPager = findViewById(R.id.viewPager)
+        tabLayout = findViewById(R.id.tabLayout)
 
-@Composable
-fun LEDControlApp() {
-    var connectionStatus by remember { mutableStateOf("Disconnected") }
-    
-    Column(
-        modifier = Modifier
-            .padding(16.dp)
-            .fillMaxSize(),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
-    ) {
-        Text(
-            text = "Status: $connectionStatus",
-            style = MaterialTheme.typography.headlineSmall
-        )
-        
-        // TODO: Add manual and auto mode UI
+        val adapter = ViewPagerAdapter(supportFragmentManager)
+        adapter.addFragment(ManualModeFragment(), "Manual Mode")
+        adapter.addFragment(AutoModeFragment(), "Auto Mode")
+        viewPager.adapter = adapter
+        tabLayout.setupWithViewPager(viewPager)
+    }
+
+    private inner class ViewPagerAdapter(manager: FragmentManager) : FragmentPagerAdapter(manager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+        private val fragmentList = mutableListOf<Fragment>()
+        private val fragmentTitleList = mutableListOf<String>()
+
+        override fun getItem(position: Int): Fragment = fragmentList[position]
+        override fun getCount(): Int = fragmentList.size
+        override fun getPageTitle(position: Int): CharSequence? = fragmentTitleList[position]
+
+        fun addFragment(fragment: Fragment, title: String) {
+            fragmentList.add(fragment)
+            fragmentTitleList.add(title)
+        }
     }
 }
