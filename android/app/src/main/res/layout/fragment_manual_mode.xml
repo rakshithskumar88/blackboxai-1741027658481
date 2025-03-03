@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Brightness"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Blue LEDs -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Blue 1"
+            android:layout_marginTop="8dp"/>
+        <SeekBar
+            android:id="@+id/brightnessBlue1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="255"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Blue 2"
+            android:layout_marginTop="8dp"/>
+        <SeekBar
+            android:id="@+id/brightnessBlue2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="255"/>
+
+        <!-- Red LEDs -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Red 1"
+            android:layout_marginTop="8dp"/>
+        <SeekBar
+            android:id="@+id/brightnessRed1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="255"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Red 2"
+            android:layout_marginTop="8dp"/>
+        <SeekBar
+            android:id="@+id/brightnessRed2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="255"/>
+
+        <!-- Green LEDs -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Green 1"
+            android:layout_marginTop="8dp"/>
+        <SeekBar
+            android:id="@+id/brightnessGreen1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="255"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Green 2"
+            android:layout_marginTop="8dp"/>
+        <SeekBar
+            android:id="@+id/brightnessGreen2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="255"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Strobe Frequency"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Frequency controls for each LED -->
+        <!-- Blue LEDs -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Blue 1"
+            android:layout_marginTop="8dp"/>
+        <SeekBar
+            android:id="@+id/frequencyBlue1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="20"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Blue 2"
+            android:layout_marginTop="8dp"/>
+        <SeekBar
+            android:id="@+id/frequencyBlue2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="20"/>
+
+        <!-- Red LEDs -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Red 1"
+            android:layout_marginTop="8dp"/>
+        <SeekBar
+            android:id="@+id/frequencyRed1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="20"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Red 2"
+            android:layout_marginTop="8dp"/>
+        <SeekBar
+            android:id="@+id/frequencyRed2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="20"/>
+
+        <!-- Green LEDs -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Green 1"
+            android:layout_marginTop="8dp"/>
+        <SeekBar
+            android:id="@+id/frequencyGreen1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="20"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Green 2"
+            android:layout_marginTop="8dp"/>
+        <SeekBar
+            android:id="@+id/frequencyGreen2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="20"/>
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Start"
+            android:layout_marginTop="24dp"/>
+    </LinearLayout>
+</ScrollView>
