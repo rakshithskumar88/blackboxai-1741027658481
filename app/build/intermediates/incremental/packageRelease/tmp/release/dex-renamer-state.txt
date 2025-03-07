@@ -1,0 +1,4 @@
+#Fri Mar 07 04:12:44 UTC 2025
+base.0=/workspaces/blackboxai-1741027658481/app/build/intermediates/dex/release/mergeDexRelease/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
